@@ -1,0 +1,18 @@
+body {
+  background-color: #94EBCD;
+  min-height: 100vh;
+  font-family: 'Anek Tamil', sans-serif;
+}
+
+.navbar,
+.footer {
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.tasks-area {
+  background-color: #FFEFA1;
+}

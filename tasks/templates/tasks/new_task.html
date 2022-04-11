@@ -1,0 +1,18 @@
+{% extends 'tasks/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid d-flex justify-content-center mt-5 mb-3">
+    <h1 class="display-1" style="font-family: 'Kalam', cursive;">
+        Almost Forgot
+    </h1>
+</div>
+<div class="container tasks-area bg-gradient p-5 mb-5 shadow-lg border border-white rounded">
+    <div class="row mx-lg-5 px-lg-5">
+        <form class="px-lg-5" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-info" type="submit">Add Task</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

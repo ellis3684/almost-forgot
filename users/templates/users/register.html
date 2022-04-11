@@ -1,0 +1,12 @@
+{% extends 'tasks/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid w-50 my-5">
+    <h1 class="my-4">Register here:</h1>
+    <form method="post">
+        {% csrf_token %}
+            {{ form|crispy }}
+        <button class="btn btn-info" type="submit">Register</button>
+    </form>
+</div>
+{% endblock %}

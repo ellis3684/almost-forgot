@@ -1,0 +1,19 @@
+{% extends 'tasks/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid d-flex justify-content-center mt-5 mb-3">
+    <h1 class="display-1" style="font-family: 'Kalam', cursive;">
+        Almost Forgot
+    </h1>
+</div>
+<div class="container tasks-area bg-gradient p-5 mb-5 shadow-lg border border-white rounded">
+    <div class="row mx-lg-5 px-lg-5">
+        <form class="px-lg-5" method="post">
+            {% csrf_token %}
+            <h3 class="mb-4">Are you sure you want to delete '{{ object.task }}'?</h3>
+            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+            <a class="btn btn-outline-dark btn-sm" href="{% url 'tasks' %}">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
