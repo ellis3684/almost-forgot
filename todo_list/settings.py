@@ -84,11 +84,11 @@ WSGI_APPLICATION = 'todo_list.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': 'db.pynzvdzzwpwmoaxvvrib.supabase.co',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'wDCT0Jq6ZtngBCzB',
-        'PORT': '5432'
+        'HOST': os.environ.get('HOST'),
+        'NAME': os.environ.get('NAME'),
+        'USER': os.environ.get('USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'PORT': os.environ.get('PORT')
     }
 }
 
@@ -140,16 +140,6 @@ LOGIN_URL = 'login'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
-# If file storage required ---
-# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-# AWS_S3_REGION_NAME = 'us-east-2'
-# AWS_S3_ADDRESSING_STYLE = 'virtual'
-# AWS_S3_SIGNATURE_VERSION = 's3v4'
-# AWS_S3_FILE_OVERWRITE = False
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 django_heroku.settings(locals())
 
