@@ -25,9 +25,9 @@ class TaskTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('tasks'))
 
-    def test_create_task(self):
+    def test_create_task_valid(self):
         self.client.login(username=self.username, password=self.pw)
-        tomorrow = datetime.datetime.today() + datetime.timedelta(days=1)
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         task_title = 'Clean the house'
         self.client.post(reverse('task-create'), data={
             'task': task_title,
