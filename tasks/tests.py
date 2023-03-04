@@ -9,6 +9,7 @@ from .models import Task
 class TaskTests(TestCase):
     username = 'fake_user123'
     pw = 'this1is2not3a4real5user@'
+    tomorrow = datetime.date.today() + datetime.timedelta(days=1)
 
     @classmethod
     def setUpTestData(cls):
@@ -27,11 +28,18 @@ class TaskTests(TestCase):
 
     def test_create_task_valid(self):
         self.client.login(username=self.username, password=self.pw)
-        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         task_title = 'Clean the house'
         self.client.post(reverse('task-create'), data={
             'task': task_title,
             'category': 'General',
-            'due_date': tomorrow
+            'due_date': self.tomorrow
         })
         self.assertEqual(Task.objects.last().task, task_title)
+
+    def test_create_task_invalid_missing_task_title(self):
+        self.client.login(username=self.username, password=self.pw)
+        self.client.post(reverse('task-create'), data={
+            'category': 'General',
+            'due_date': self.tomorrow
+        })
+        self.assertEqual(Task.objects.all().count(), 0)
